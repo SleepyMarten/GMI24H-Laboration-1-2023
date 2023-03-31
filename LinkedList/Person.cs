@@ -21,11 +21,18 @@ namespace LinkedList
             this.id = Guid.NewGuid();
             this.occupation = occupation;
         }
+        /// <summary>
+        /// method to return name of person
+        /// </summary>
+        /// <returns>name</returns>
         public string getName()
         {
             return name;
         }
-
+        /// <summary>
+        /// Method to return all variables in Person
+        /// </summary>
+        /// <returns>name, age, id, occupation</returns>
         public string getAll()
         {
             return ($"Name: {name} Age: {age} ID: {id} Occupation: {occupation}");
