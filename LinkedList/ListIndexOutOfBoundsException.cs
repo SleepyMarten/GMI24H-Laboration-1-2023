@@ -9,15 +9,15 @@ namespace LinkedList
     public class ListIndexOutOfBoundsException
     {
 
-        public void stoner()
+        public void indexOutOfBound()
         {
-            Console.WriteLine("Stupid");
+            Console.WriteLine("ERROR || Index out of bound || ERROR");
         }
 
-        //public ListIndexOutOfBoundsException() : base() { }
+        public void indexOutOfBoundShowUser()
+        {
+            Console.WriteLine("ERROR || Inputed index number does not exist || ERROR");
+        }
 
-        //public ListIndexOutOfBoundsException(string message) : base(message) { }
-
-        //public ListIndexOutOfBoundsException(string message, Exception innerException) : base(message, innerException) { }
     }
 }
