@@ -13,7 +13,7 @@ namespace LinkedList
 
             ListReferencedBased LinkedList = new ListReferencedBased();
             ListIndexOutOfBoundsException ex = new ListIndexOutOfBoundsException();
-
+            Person person = null;
             int count = 0;
             int choice = 0;
             void creatDummy()
@@ -45,7 +45,6 @@ namespace LinkedList
                 Console.WriteLine("Which user do you want to see information on?");
                 Console.WriteLine("Please input INDEX NUMBER of the user: ");
                 Console.WriteLine($"SIZE: {LinkedList.size()}");
-                Person person = null;
 
                 int indexNumber = Convert.ToInt32(Console.ReadLine());
                 try
@@ -82,8 +81,24 @@ namespace LinkedList
                 {
                     ex.wrongInputFormat();
                 }
+            }
 
+            void removeUser()
+            {
+                Console.WriteLine("Input index number of the user you wish to remove");
+                int indexNumber = Convert.ToInt32(Console.ReadLine());
+                person = (Person)LinkedList.get(indexNumber);
+                LinkedList.remove(indexNumber);
+                Console.WriteLine($"Removing {person.getName()}");
+                Console.WriteLine("DONE REMOVING ... Showing current list:");
+                outputer();
+            }
 
+            void removeAll()
+            {
+                Console.WriteLine("Removing all user from list...");
+                LinkedList.removeAll();
+                outputer();
             }
             creatDummy();
             do
@@ -120,11 +135,11 @@ namespace LinkedList
                         break;
                     case 4:
                         Console.WriteLine("Option 4 selected.");
-                        // Do something for option 4
+                        removeUser();
                         break;
                     case 5:
                         Console.WriteLine("Option 5 selected.");
-                        // Do something for option 5
+                        removeAll();
                         break;
                     case 6:
                         Console.WriteLine("Option 6 selected.");
