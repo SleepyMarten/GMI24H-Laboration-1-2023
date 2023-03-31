@@ -58,14 +58,15 @@ namespace LinkedList
             if (index < 1 || index > size())
             {
                 ex.indexOutOfBoundShowUser();
+                return null;
             }
 
             Node current = head;
             for (int i = 1; i < index; i++)
             {
                 current = current.getNext();
+                
             }
-
             return current.getItem();
         }
 

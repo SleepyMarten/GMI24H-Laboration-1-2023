@@ -19,5 +19,9 @@ namespace LinkedList
             Console.WriteLine("ERROR || Inputed index number does not exist || ERROR");
         }
 
+        public void wrongInputFormat()
+        {
+            Console.WriteLine("ERROR || INVALID INPUT FORMAT || ERROR");
+        }
     }
 }

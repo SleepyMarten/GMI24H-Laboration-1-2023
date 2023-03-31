@@ -12,10 +12,11 @@ namespace LinkedList
 
 
             ListReferencedBased LinkedList = new ListReferencedBased();
-
+            ListIndexOutOfBoundsException ex = new ListIndexOutOfBoundsException();
 
             int count = 0;
-            void creatyDummy()
+            int choice = 0;
+            void creatDummy()
             {
                 LinkedList.insert(1, new Person("Atti", 24,"Student"));
                 LinkedList.insert(2, new Person("Mikael", 25, "Student"));
@@ -33,8 +34,7 @@ namespace LinkedList
                     {
                         count += 1;
                         Person person = (Person)LinkedList.get(count);
-                        Console.WriteLine($"Name:{person.getAll()}");
-
+                        Console.WriteLine($"Index: {count} || Name:{person.getAll()}");
                     }
                     Console.WriteLine("End of list\n");
                     count = 0;
@@ -44,16 +44,51 @@ namespace LinkedList
             {
                 Console.WriteLine("Which user do you want to see information on?");
                 Console.WriteLine("Please input INDEX NUMBER of the user: ");
+                Console.WriteLine($"SIZE: {LinkedList.size()}");
+                Person person = null;
+
                 int indexNumber = Convert.ToInt32(Console.ReadLine());
-                Person person = (Person)LinkedList.get(indexNumber);
-                Console.WriteLine($"Name:{person.getAll()}");
+                try
+                {
+                    person = (Person)LinkedList.get(indexNumber);
+                    if (person != null)
+                    {
+                        Console.WriteLine($"Name:{person.getAll()}");
+                    }
+                }
+                catch
+                {
+                    ex.indexOutOfBoundShowUser();
+                }
 
             }
+            void addUser()
+            {
+                Console.WriteLine("Please input user information");
+                try
+                {
+                    Console.WriteLine("Input index number");
+                    int userIndex = Convert.ToInt32(Console.ReadLine());
+                    Console.WriteLine("Input Name");
+                    string userName = Console.ReadLine();
+                    Console.WriteLine("Input Occupation");
+                    string userOccupation = Console.ReadLine();
+                    Console.WriteLine("Input Age");
+                    int userAge = Convert.ToInt32(Console.ReadLine());
 
-            int choice = 0;
+                    LinkedList.insert(userIndex, new Person(userName, userAge, userOccupation));
+                }
+                catch
+                {
+                    ex.wrongInputFormat();
+                }
 
+
+            }
+            creatDummy();
             do
             {
+                
                 Console.WriteLine("Select an option: ");
                 Console.WriteLine("1. Show list of Nodes");
                 Console.WriteLine("2. Show user by [index NO]");
@@ -81,7 +116,7 @@ namespace LinkedList
                         break;
                     case 3:
                         Console.WriteLine("Option 3 selected.");
-                        // Do something for option 3
+                        addUser();
                         break;
                     case 4:
                         Console.WriteLine("Option 4 selected.");
