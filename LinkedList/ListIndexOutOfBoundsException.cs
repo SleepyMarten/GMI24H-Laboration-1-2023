@@ -22,6 +22,20 @@ namespace LinkedList
         public void wrongInputFormat()
         {
             Console.WriteLine("ERROR || INVALID INPUT FORMAT || ERROR");
+        }        
+        
+        public void indexOutOfBoundTooHigh()
+        {
+            Console.WriteLine("ERROR || INVALID INDEX NUMBER, THE NUMBER INPUTED WAS TOO HIGH AND OUT OF BOUND. . INPUT A VALID INDEX NUMBER  || ERROR");
+        }
+
+        public void indexOutOfBoundTooLow()
+        {
+            Console.WriteLine("ERROR || INVALID INDEX NUMBER, THE NUMBER INPUTED WAS TOO LOW AND OUT OF BOUND. . INPUT A VALID INDEX NUMBER  || ERROR");
+        }
+        public void inputCannotBeNull()
+        {
+            Console.WriteLine("ERROR || INPUT CANNOT BE EMPTY/NULL  || ERROR");
         }
     }
 }

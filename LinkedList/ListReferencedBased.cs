@@ -18,10 +18,22 @@ namespace LinkedList
             for (int i = 1; i < index; i++)
             {
                 current = current.getNext();
+                break;
             }
             return current;
         }
+        void outOfBound(int index)
+        {
+            if (index < 1 || index > size() + 1)
+            {
+                ex.indexOutOfBoundTooHigh();
+            }
+            if (index > size() + 1)
+            {
+                ex.indexOutOfBoundTooLow();
+            }
 
+        }
         public int size()
         {
             int count = 0;
@@ -36,10 +48,7 @@ namespace LinkedList
 
         public void insert(int index, object item)
         {
-            if (index < 1 || index > size() + 1)
-            {
-                ex.indexOutOfBound();
-            }
+            outOfBound(index);
             if (index == 1)
             {
                 head = new Node(item, head);
@@ -73,14 +82,7 @@ namespace LinkedList
 
         public void remove(int index)
         {
-            if (size == null)
-            {
-                throw new Exception("List is empty.");
-            }
-            if (index < 1 || index > size())
-            {
-                throw new IndexOutOfRangeException();
-            }
+            outOfBound(index);
             if (index == 1)
             {
                 head = head.getNext();
