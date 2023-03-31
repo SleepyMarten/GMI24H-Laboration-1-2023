@@ -12,7 +12,7 @@ namespace LinkedList
         {
             if (index < 1 || index > size())
             {
-                ex.stoner();
+                ex.indexOutOfBound();
             }
             Node current = head;
             for (int i = 1; i < index; i++)
@@ -38,7 +38,7 @@ namespace LinkedList
         {
             if (index < 1 || index > size() + 1)
             {
-                throw new IndexOutOfRangeException();
+                ex.indexOutOfBound();
             }
             if (index == 1)
             {
@@ -57,7 +57,7 @@ namespace LinkedList
         {
             if (index < 1 || index > size())
             {
-                ex.stoner();
+                ex.indexOutOfBoundShowUser();
             }
 
             Node current = head;
