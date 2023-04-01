@@ -18,7 +18,7 @@ namespace LinkedList
             int choice = 0;
             void creatDummy()
             {
-                if(LinkedList.size() != null)
+                if(LinkedList.size() > 1)
                 {
                     Console.WriteLine("Cannot creat dummy, a list already exists.");
                 }
@@ -55,14 +55,9 @@ namespace LinkedList
                     {
                         count += 1;
                         Person person = (Person)LinkedList.get(count);
-<<<<<<< Updated upstream
-                        Console.WriteLine($"Index: {count} || Name:{person.getAll()}");
-=======
                         Console.WriteLine($"Index: {count} || {person.getAll()}");
                         //IF only want to show name and not other information in list.
                         //Console.WriteLine($"Index: {count} || Name:{person.getName()}");
-
->>>>>>> Stashed changes
                     }
                     Console.WriteLine("End of list\n");
                     count = 0;
@@ -109,9 +104,6 @@ namespace LinkedList
                 {
                     Console.WriteLine("Input index number [USE NUMBERS (INTEGERS)]");
                     int userIndex = Convert.ToInt32(Console.ReadLine());
-<<<<<<< Updated upstream
-                    if (userIndex > LinkedList.size())
-=======
                     //if (userIndex > LinkedList.size())
                     //{
                     //    ex.indexOutOfBoundTooHigh();
@@ -130,14 +122,8 @@ namespace LinkedList
 
 					}
                     if (userIndex > LinkedList.size() +1)
->>>>>>> Stashed changes
                     {
                         ex.indexOutOfBoundTooHigh();
-                        return;
-                    }
-                    if (userIndex < LinkedList.size())
-                    {
-                        ex.indexOutOfBoundTooLow();
                         return;
                     }
                     Console.WriteLine("Input Name [USE STRINGS]");
@@ -156,20 +142,6 @@ namespace LinkedList
                     }
                     Console.WriteLine("Input Age [USE NUMBERS (INTEGERS)]");
                     int userAge = Convert.ToInt32(Console.ReadLine());
-<<<<<<< Updated upstream
-                    if (userAge > LinkedList.size())
-                    {
-                        ex.indexOutOfBoundTooHigh();
-                        return;
-                    }
-                    if (userAge < LinkedList.size())
-=======
-                    if (userAge <=0)
->>>>>>> Stashed changes
-                    {
-                        ex.indexOutOfBoundTooLow();
-                        return;
-                    }
                     LinkedList.insert(userIndex, new Person(userName, userAge, userOccupation));
 
                 }
@@ -185,58 +157,38 @@ namespace LinkedList
             ///Method to to remove a spesific user with spesifiying index number.
             /// </para>
             /// </summary>
-<<<<<<< Updated upstream
-            void removeUser()
+            void removeUser() //IMPLEMENT ERROR HANDLE
             {
                 Console.WriteLine("Input index number of the user you wish to remove\n");
                 outputer();
                 int indexNumber = Convert.ToInt32(Console.ReadLine());
-                person = (Person)LinkedList.get(indexNumber);
+				//if (indexNumber < LinkedList.size() || indexNumber > LinkedList.size())
+				//{
+				//    Console.WriteLine("Index Number Cannot be Empty or out of bounds.");
+				//    return;
+				//}
+				if (indexNumber == null || indexNumber == 0)
+				{
+					ex.inputCannotBeNull();
+					return;
+
+				}
+				if (indexNumber < 0)
+				{
+					ex.indexOutOfBoundTooLow();
+					return;
+
+				}
+				if (indexNumber > LinkedList.size())
+				{
+					ex.indexOutOfBoundTooHigh();
+					return;
+				}
+				person = (Person)LinkedList.get(indexNumber);
                 LinkedList.remove(indexNumber);
                 Console.WriteLine($"Removing {person.getName()}");
                 Console.WriteLine("DONE REMOVING ... \nShowing current list:");
                 outputer();
-=======
-            void removeUser() 
-            {
-                try
-                {
-					Console.WriteLine("Input index number of the user you wish to remove\n");
-					outputer();
-					int indexNumber = Convert.ToInt32(Console.ReadLine());
-					//if (indexNumber < LinkedList.size() || indexNumber > LinkedList.size())
-					//{
-					//    Console.WriteLine("Index Number Cannot be Empty or out of bounds.");
-					//    return;
-					//}
-					if (indexNumber == null || indexNumber == 0)
-					{
-						ex.inputCannotBeNull();
-						return;
-
-					}
-					if (indexNumber < 0)
-					{
-						ex.indexOutOfBoundTooLow();
-						return;
-
-					}
-					if (indexNumber > LinkedList.size())
-					{
-						ex.indexOutOfBoundTooHigh();
-						return;
-					}
-					person = (Person)LinkedList.get(indexNumber);
-					LinkedList.remove(indexNumber);
-					Console.WriteLine($"Removing {person.getName()}");
-					Console.WriteLine("DONE REMOVING ... \nShowing current list:");
-					outputer();
-				}
-                catch {
-                    ex.wrongInputFormat();
-                }
-
->>>>>>> Stashed changes
             }
             ///<summary>
             ///<para>
@@ -286,19 +238,12 @@ namespace LinkedList
                 Console.WriteLine("4. Remove user");
                 Console.WriteLine("5. Remove all users");
                 Console.WriteLine("6. Create dummy list");
-<<<<<<< Updated upstream
-                Console.WriteLine("7. Exit");
-                Console.Write("Enter your choice: ");
-
-                while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 7)
-=======
                 Console.WriteLine("7. Clear Console");
 				Console.WriteLine("8. Check if a list is empty");
 				Console.WriteLine("9. Exit");
                 Console.Write("Enter your choice: ");
 
                 while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 9)
->>>>>>> Stashed changes
                 {
                     Console.WriteLine("\nInvalid choice. Please try again.\n");
                     Console.Write("Enter your choice: ");
@@ -336,18 +281,13 @@ namespace LinkedList
                         anyKey();
                         break;
                     case 7:
-<<<<<<< Updated upstream
-                        Console.WriteLine("Exiting program...");
-                        anyKey();
-=======
                         Console.Clear();
                         anyKey();
                         break;
                     case 8:
-                        Console.WriteLine("Option 8 selected.");
-                        isEmpty();
+						Console.WriteLine("Option 8 selected.");
+						isEmpty();
 						anyKey();
->>>>>>> Stashed changes
                         break;
 					case 9:
 						Console.WriteLine("Exiting program...");
@@ -355,13 +295,9 @@ namespace LinkedList
 						break;
 
 
-<<<<<<< Updated upstream
-                }
-            } while (choice != 7);
-=======
+
 				}
             } while (choice != 9);
->>>>>>> Stashed changes
 
         }
 

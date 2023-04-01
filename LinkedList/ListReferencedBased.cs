@@ -8,10 +8,6 @@ namespace LinkedList
     {
         ListIndexOutOfBoundsException ex = new ListIndexOutOfBoundsException();
         private Node head;
-<<<<<<< Updated upstream
-        private Node find(int index)
-=======
-
 
 		/// <summary>
 		///This methon return TRUE if the head was't null, else it return FALSE
@@ -27,7 +23,6 @@ namespace LinkedList
 		/// <param name="index"></param>
 		/// <returns></returns>
 		private Node find(int index)
->>>>>>> Stashed changes
         {
             if (index < 1 || index > size())
             {
