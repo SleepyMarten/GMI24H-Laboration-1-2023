@@ -32,7 +32,6 @@ namespace LinkedList
             {
                 ex.indexOutOfBoundTooLow();
             }
-
         }
         public int size()
         {
