@@ -86,8 +86,6 @@ namespace LinkedList
                 {
                     ex.indexOutOfBoundShowUser();
                 }
-
-
             }
             ///<summary>
             ///<para>
@@ -143,16 +141,16 @@ namespace LinkedList
             ///Method to to remove a spesific user with spesifiying index number.
             /// </para>
             /// </summary>
-            void removeUser()
+            void removeUser() //IMPLEMENT ERROR HANDLE
             {
                 Console.WriteLine("Input index number of the user you wish to remove\n");
                 outputer();
                 int indexNumber = Convert.ToInt32(Console.ReadLine());
-                if (indexNumber < LinkedList.size() || indexNumber > LinkedList.size())
-                {
-                    Console.WriteLine("Index Number Cannot be Empty or out of bounds.");
-                    return;
-                }
+                //if (indexNumber < LinkedList.size() || indexNumber > LinkedList.size())
+                //{
+                //    Console.WriteLine("Index Number Cannot be Empty or out of bounds.");
+                //    return;
+                //}
                 person = (Person)LinkedList.get(indexNumber);
                 LinkedList.remove(indexNumber);
                 Console.WriteLine($"Removing {person.getName()}");

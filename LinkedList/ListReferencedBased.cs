@@ -8,6 +8,11 @@ namespace LinkedList
     {
         ListIndexOutOfBoundsException ex = new ListIndexOutOfBoundsException();
         private Node head;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private Node find(int index)
         {
             if (index < 1 || index > size())
@@ -33,6 +38,10 @@ namespace LinkedList
                 ex.indexOutOfBoundTooLow();
             }
         }
+        /// <summary>
+        /// Returns the number of items in the list by going trought the list and counting nodes, returns 0 if the list is empty.
+        /// </summary>
+        /// <returns>Returns the total size</returns>
         public int size()
         {
             int count = 0;
@@ -44,7 +53,11 @@ namespace LinkedList
             }
             return count;
         }
-
+        /// <summary>
+        /// Add or insert item into the list with the spesified index, throws indexOutOfBoundsTooHigh/Low depending on the index input.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="item"></param>
         public void insert(int index, object item)
         {
             outOfBound(index);
@@ -59,8 +72,11 @@ namespace LinkedList
                 previous.setNext(newNode);
             }
         }
-
-
+        /// <summary>
+        /// Returns the item at the specified index. The method throws a indexOutOfBoundShowUser if the index is out of bounds.
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns>Returns item from a spesified index</returns>
         public object get(int index)
         {
             if (index < 1 || index > size())
@@ -78,7 +94,10 @@ namespace LinkedList
             return current.getItem();
         }
 
-
+        /// <summary>
+        /// Remove a node in the list from a spesific index input.
+        /// </summary>
+        /// <param name="index"></param>
         public void remove(int index)
         {
             outOfBound(index);
@@ -93,6 +112,9 @@ namespace LinkedList
             }
         }
 
+        /// <summary>
+        /// Removes all nodes from the list.
+        /// </summary>
         public void removeAll()
         {
             head = null;

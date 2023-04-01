@@ -21,12 +21,18 @@ namespace LinkedList
         {
             return data;
         }
-
+        /// <summary>
+        /// This method returns a reference to the next node in the list.
+        /// </summary>
+        /// <returns>returns next Node</returns>
         public Node getNext()
         {
             return next;
         }
-
+        /// <summary>
+        /// Takes input NODE and then sets it as the next field of the current node to the inputed NODE.
+        /// </summary>
+        /// <param name="next"></param>
         public void setNext(Node next)
         {
             this.next = next;   
