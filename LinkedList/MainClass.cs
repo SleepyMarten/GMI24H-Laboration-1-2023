@@ -197,7 +197,8 @@ namespace LinkedList
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine($"Unknown error at outputer: {e}");
+                    ex.wrongInputFormat();
+                    Debug.WriteLine($"Unknown error at outputer: {e}");
                 }
             }
 
