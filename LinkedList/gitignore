@@ -1,14 +1,16 @@
 # Ignore Visual Studio files
 *.user
-*.suo
 *.cache
-*.dll
 *.exe
-*.pdb
+*.suo
+*.dll
+*.lock
 
 # Ignore bin and obj directories
 bin/
 obj/
+.vs/
+
 
 # Allow other files
-!*
+#!*
