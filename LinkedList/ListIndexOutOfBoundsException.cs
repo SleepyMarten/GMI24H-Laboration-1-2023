@@ -11,29 +11,29 @@ namespace LinkedList
 
         public void indexOutOfBound()
         {
-            Console.WriteLine("ERROR || Index out of bound || ERROR");
+            Console.WriteLine("ERROR || Index out of bound");
         }
 
         public void indexOutOfBoundShowUser()
         {
-            Console.WriteLine("ERROR || Inputed index number does not exist || ERROR");
+            Console.WriteLine("ERROR || Inputed index number does not exist");
         }
 
         public void wrongInputFormat()
         {
-            Console.WriteLine("ERROR || INVALID INPUT FORMAT || ERROR");
+            Console.WriteLine("ERROR || INVALID INPUT FORMAT");
         }        
         
         public void indexOutOfBoundTooHigh()
         {
-            Console.WriteLine("ERROR || INVALID INDEX NUMBER, THE NUMBER INPUTED WAS TOO HIGH AND OUT OF BOUND. . INPUT A VALID INDEX NUMBER  || ERROR");
+            Console.WriteLine("ERROR || INVALID index number, the INPUT was TOO HIGH!");
         }
 
         public void indexOutOfBoundTooLow()
         {
-            Console.WriteLine("ERROR || INVALID INDEX NUMBER, THE NUMBER INPUTED WAS TOO LOW AND OUT OF BOUND. . INPUT A VALID INDEX NUMBER  || ERROR");
+            Console.WriteLine("ERROR || INVALID index number, the INPUT was TOO LOW!");
         }
-        public void inputCannotBeNull()
+        public void inputCannotBeEmptyOrNull()
         {
             Console.WriteLine("ERROR || INPUT CANNOT BE EMPTY/NULL  || ERROR");
         }

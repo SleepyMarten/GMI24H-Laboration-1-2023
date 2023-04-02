@@ -1,6 +1,7 @@
 using Prometheus;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace LinkedList
 {
@@ -34,33 +35,36 @@ namespace LinkedList
             {
                 Console.WriteLine("\nPRESS ANY KEY TO CONTINUE\n");
                 Console.ReadKey();
+                Console.Clear();
             }
 
-            ///<summary>
-            ///<para>
-            ///Method to output and show contents of the list.
-            /// </para>
-            /// </summary>
-            void outputer()
+            void outputer() //show nodes in list.
             {
-                if (LinkedList.size() == 0) Console.WriteLine("List contains 0 Nodes....");
-                if (LinkedList.size() > 0)
+                try
                 {
-                    Console.WriteLine($"List contains {LinkedList.size()} Nodes\n");
-                    for (int i = 1; i <= LinkedList.size(); i++)
+                    if (LinkedList.size() == 0) Console.WriteLine("List contains 0 Nodes....");
+                    if (LinkedList.size() > 0)
                     {
-                        count += 1;
-                        Person person = (Person)LinkedList.get(count);
+                        Console.WriteLine($"List contains {LinkedList.size()} Nodes\n");
+                        for (int i = 1; i <= LinkedList.size(); i++)
+                        {
+                            count += 1;
+                            Person person = (Person)LinkedList.get(count);
 
-                        Console.WriteLine($"Index: {count} || {person.getAll()}");
-                        //IF only want to show name and not other information in list.
-                        //Console.WriteLine($"Index: {count} || Name:{person.getName()}");
+                            Console.WriteLine($"Index: {count} || {person.getAll()}");
+                            //IF only want to show name and not other information in list.
+                            //Console.WriteLine($"Index: {count} || Name:{person.getName()}");
+                        }
+                        Console.WriteLine("End of list\n");
+                        count = 0;
 
                     }
-                    Console.WriteLine("End of list\n");
-                    count = 0;
-
                 }
+                catch(Exception e) 
+                {
+                    Console.WriteLine($"Unknown error at outputer: {e}");
+                }
+
             }
             ///<summary>
             ///<para>
@@ -69,22 +73,28 @@ namespace LinkedList
             /// </summary>
             void showUser()
             {
-                Console.WriteLine("Which user do you want to see information on?");
-                Console.WriteLine($"Current list: ");
-                outputer();
-                Console.WriteLine("Please input INDEX NUMBER of the user: ");
-                int indexNumber = Convert.ToInt32(Console.ReadLine());
                 try
                 {
-                    person = (Person)LinkedList.get(indexNumber);
-                    if (person != null)
+                    if (LinkedList.isEmpty() == false)
                     {
+                        Console.WriteLine("Which user do you want to see information on?");
+                        Console.WriteLine($"Current list: ");
+                        outputer();
+                        Console.WriteLine("Please input INDEX NUMBER of the user: ");
+                        int indexNumber = Convert.ToInt32(Console.ReadLine());
+                        person = (Person)LinkedList.get(indexNumber);
                         Console.WriteLine($"{person.getAll()}");
                     }
+                    if (LinkedList.isEmpty() == true)
+                    {
+                        Console.WriteLine("The list is empty, going back to menu.");
+                        return;
+                    }
                 }
-                catch
+                catch (Exception e)
                 {
-                    ex.indexOutOfBoundShowUser();
+                    ex.wrongInputFormat();
+                    Debug.WriteLine($"Unknown error at outputer: {e}");
                 }
             }
             ///<summary>
@@ -95,60 +105,59 @@ namespace LinkedList
             void addUser()
             {
                 Console.WriteLine("Please input user information");
-                
                 try
                 {
                     Console.WriteLine("Input index number [USE NUMBERS (INTEGERS)]");
                     int userIndex = Convert.ToInt32(Console.ReadLine());
-                    //if (userIndex > LinkedList.size())
-                    //{
-                    //    ex.indexOutOfBoundTooHigh();
-                    //    return;
-                    //}
-
-                    if (userIndex == null || userIndex == 0)
-
+                    if (userIndex == null)
                     {
-                        ex.inputCannotBeNull();
+                        ex.inputCannotBeEmptyOrNull();
                         return;
-
-
 					}
                     if(userIndex<0)
                     {
                         ex.indexOutOfBoundTooLow();
                         return;
-
 					}
                     if (userIndex > LinkedList.size() +1)
                     {
                         ex.indexOutOfBoundTooHigh();
                         return;
-
                     }
                     Console.WriteLine("Input Name [USE STRINGS]");
                     string userName = Console.ReadLine();
                     if(string.IsNullOrEmpty(userName))
                     {
-                        ex.inputCannotBeNull();
+                        ex.inputCannotBeEmptyOrNull();
                         return;
                     }
                     Console.WriteLine("Input Occupation [USE STRINGS]");
                     string userOccupation = Console.ReadLine();
                     if (string.IsNullOrEmpty(userOccupation))
                     {
-                        ex.inputCannotBeNull();
+                        ex.inputCannotBeEmptyOrNull();
                         return;
                     }
                     Console.WriteLine("Input Age [USE NUMBERS (INTEGERS)]");
                     int userAge = Convert.ToInt32(Console.ReadLine());
+                    if (userAge == null)
+                    {
+                        ex.inputCannotBeEmptyOrNull();
+                        return;
+                    }
+                    if (userAge < 0)
+                    {
+                        ex.indexOutOfBoundTooLow();
+                        return;
+                    }
                     LinkedList.insert(userIndex, new Person(userName, userAge, userOccupation));
+                    Console.WriteLine($"User [[{userName}]] has been added into the list");
 
                 }
-                catch
+                catch (Exception e)
                 {
                     ex.wrongInputFormat();
-                    return;
+                    Debug.WriteLine($"Unknown error at outputer: {e}");
                 }
 
             }
@@ -159,39 +168,39 @@ namespace LinkedList
             /// </summary>
             void removeUser() //IMPLEMENT ERROR HANDLE
             {
-                Console.WriteLine("Input index number of the user you wish to remove\n");
-                outputer();
-                int indexNumber = Convert.ToInt32(Console.ReadLine());
-
-				//if (indexNumber < LinkedList.size() || indexNumber > LinkedList.size())
-				//{
-				//    Console.WriteLine("Index Number Cannot be Empty or out of bounds.");
-				//    return;
-				//}
-				if (indexNumber == null || indexNumber == 0)
-				{
-					ex.inputCannotBeNull();
-					return;
-
-				}
-				if (indexNumber < 0)
-				{
-					ex.indexOutOfBoundTooLow();
-					return;
-
-				}
-				if (indexNumber > LinkedList.size())
-				{
-					ex.indexOutOfBoundTooHigh();
-					return;
-				}
-				person = (Person)LinkedList.get(indexNumber);
-
-                LinkedList.remove(indexNumber);
-                Console.WriteLine($"Removing {person.getName()}");
-                Console.WriteLine("DONE REMOVING ... \nShowing current list:");
-                outputer();
+                try
+                {
+                    Console.WriteLine("Input index number of the user you wish to remove\n");
+                    outputer();
+                    int indexNumber = Convert.ToInt32(Console.ReadLine());
+                    if (indexNumber == null || indexNumber == 0)
+                    {
+                        ex.inputCannotBeEmptyOrNull();
+                        return;
+                    }
+                    if (indexNumber < 0)
+                    {
+                        ex.indexOutOfBoundTooLow();
+                        return;
+                    }
+                    if (indexNumber > LinkedList.size())
+                    {
+                        ex.indexOutOfBoundTooHigh();
+                        return;
+                    }
+                    Console.Clear();
+                    person = (Person)LinkedList.get(indexNumber);
+                    LinkedList.remove(indexNumber);
+                    Console.WriteLine($"Removing {person.getName()}");
+                    Console.WriteLine("DONE REMOVING ... \nShowing current list:");
+                    outputer();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Unknown error at outputer: {e}");
+                }
             }
+
             ///<summary>
             ///<para>
             ///Method to remove all the user from the list.
@@ -212,24 +221,26 @@ namespace LinkedList
 			/// </summary>
 			void isEmpty()
             {
-                Console.WriteLine("Checking if the list is empyt..");
-                if (!LinkedList.isEmpty())
+                try
                 {
-                    Console.WriteLine("The list was't empty");
+                    Console.WriteLine("Checking if the list is empty..");
+                    if (!LinkedList.isEmpty())
+                    {
+                        Console.WriteLine("The list is not empty");
+                    }
+                    else
+                    {
+                        Console.WriteLine("The list is empty");
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"Unknown error at outputer: {e}");
+                }
 
-                }
-                else
-                {
-                    Console.WriteLine("The list was empty");
-                }
             }
-            ///<summary>
-            ///<para>
-            ///Method to create dummy list that contains persons.
-            /// </para>
-            /// </summary>
-            creatDummy();
 
+            creatDummy();
             do
             {
                 Console.WriteLine("Select an option: ");
@@ -240,10 +251,8 @@ namespace LinkedList
                 Console.WriteLine("5. Remove all users");
                 Console.WriteLine("6. Create dummy list");
                 Console.WriteLine("7. Clear Console");
-
 				Console.WriteLine("8. Check if a list is empty");
 				Console.WriteLine("9. Exit");
-                Console.Write("Enter your choice: ");
 
                 while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 9)
 
@@ -252,56 +261,58 @@ namespace LinkedList
                     Console.Write("Enter your choice: ");
                 }
 
-                    switch (choice)
+                switch (choice)
                 {
                     case 1:
+                        Console.Clear();
                         Console.WriteLine("\nShowing list....");
                         outputer();
                         anyKey();
                         break;
                     case 2:
+                        Console.Clear();
                         showUser();
                         anyKey();
                         break;
                     case 3:
+                        Console.Clear();
                         Console.WriteLine("Option 3 selected.");
                         addUser();
                         anyKey();
                         break;
                     case 4:
+                        Console.Clear();
                         Console.WriteLine("Option 4 selected.");
                         removeUser();
                         anyKey();
                         break;
                     case 5:
+                        Console.Clear();
                         Console.WriteLine("Option 5 selected.");
                         removeAll();
                         anyKey();
                         break;
                     case 6:
+                        Console.Clear();
                         Console.WriteLine("Option 6 selected.");
                         creatDummy();
                         anyKey();
                         break;
                     case 7:
                         Console.Clear();
-
-
-
                         anyKey();
                         break;
                     case 8:
-						Console.WriteLine("Option 8 selected.");
+                        Console.Clear();
+                        Console.WriteLine("Option 8 selected.");
 						isEmpty();
 						anyKey();
                         break;
 					case 9:
-						Console.WriteLine("Exiting program...");
+                        Console.Clear();
+                        Console.WriteLine("Exiting program...");
 						anyKey();
 						break;
-
-
-
 
 				}
             } while (choice != 9);

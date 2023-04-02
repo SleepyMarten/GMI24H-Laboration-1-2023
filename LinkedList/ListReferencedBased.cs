@@ -8,9 +8,10 @@ namespace LinkedList
         ListIndexOutOfBoundsException ex = new ListIndexOutOfBoundsException();
         private Node head;
 
-		/// <summary>
-		///This methon return TRUE if the head was't null, else it return FALSE
-		/// </summary>
+        /// <summary>
+        ///This method returns TRUE if the head is not null, else it will return FALSE.
+        /// </summary>
+        /// <returns>Boolean, True or False</returns>
 		public bool isEmpty()
         {
             return head == null;
@@ -22,7 +23,6 @@ namespace LinkedList
 		/// <param name="index"></param>
 		/// <returns></returns>
 		private Node find(int index)
-
         {
             if (index < 1 || index > size())
             {
@@ -36,6 +36,10 @@ namespace LinkedList
             }
             return current;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
         void outOfBound(int index)
         {
             if (index < 1 || index > size() + 1)

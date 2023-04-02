@@ -16,7 +16,10 @@ namespace LinkedList
             this.data = data;
             this.next = next;
         }
-
+        /// <summary>
+        /// Method to get object information of a person
+        /// </summary>
+        /// <returns>data</returns>
         public object getItem()
         {
             return data;
