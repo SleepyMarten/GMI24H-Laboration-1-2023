@@ -1,0 +1,16 @@
+# Ignore Visual Studio files
+*.user
+*.cache
+*.exe
+*.suo
+
+# Ignore bin and obj directories
+bin/
+obj/
+.vs/
+bin
+obj
+.vs
+
+# Allow other files
+!*
