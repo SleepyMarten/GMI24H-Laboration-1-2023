@@ -3,6 +3,8 @@
 *.cache
 *.exe
 *.suo
+*.dll
+*.lock
 
 # Ignore bin and obj directories
 bin/
