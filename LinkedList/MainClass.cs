@@ -1,4 +1,3 @@
-﻿using LinkedList;
 using Prometheus;
 using System;
 using System.Collections.Generic;
@@ -9,8 +8,6 @@ namespace LinkedList
     {
         public static void Main(string[] args)
         {
-
-
             ListReferencedBased LinkedList = new ListReferencedBased();
             ListIndexOutOfBoundsException ex = new ListIndexOutOfBoundsException();
             Person person = null;
@@ -31,7 +28,6 @@ namespace LinkedList
                     LinkedList.insert(4, new Person("Hans", 30, "Student"));
                     LinkedList.insert(5, new Person("Rikard", 30, "Student"));
                 }
-
             }
 
             void anyKey() //Simple method for for press any key to as a checkpoint in the program.
@@ -55,9 +51,11 @@ namespace LinkedList
                     {
                         count += 1;
                         Person person = (Person)LinkedList.get(count);
+
                         Console.WriteLine($"Index: {count} || {person.getAll()}");
                         //IF only want to show name and not other information in list.
                         //Console.WriteLine($"Index: {count} || Name:{person.getName()}");
+
                     }
                     Console.WriteLine("End of list\n");
                     count = 0;
@@ -88,8 +86,6 @@ namespace LinkedList
                 {
                     ex.indexOutOfBoundShowUser();
                 }
-
-
             }
             ///<summary>
             ///<para>
@@ -109,10 +105,13 @@ namespace LinkedList
                     //    ex.indexOutOfBoundTooHigh();
                     //    return;
                     //}
+
                     if (userIndex == null || userIndex == 0)
+
                     {
                         ex.inputCannotBeNull();
                         return;
+
 
 					}
                     if(userIndex<0)
@@ -125,6 +124,7 @@ namespace LinkedList
                     {
                         ex.indexOutOfBoundTooHigh();
                         return;
+
                     }
                     Console.WriteLine("Input Name [USE STRINGS]");
                     string userName = Console.ReadLine();
@@ -162,6 +162,7 @@ namespace LinkedList
                 Console.WriteLine("Input index number of the user you wish to remove\n");
                 outputer();
                 int indexNumber = Convert.ToInt32(Console.ReadLine());
+
 				//if (indexNumber < LinkedList.size() || indexNumber > LinkedList.size())
 				//{
 				//    Console.WriteLine("Index Number Cannot be Empty or out of bounds.");
@@ -185,6 +186,7 @@ namespace LinkedList
 					return;
 				}
 				person = (Person)LinkedList.get(indexNumber);
+
                 LinkedList.remove(indexNumber);
                 Console.WriteLine($"Removing {person.getName()}");
                 Console.WriteLine("DONE REMOVING ... \nShowing current list:");
@@ -230,7 +232,6 @@ namespace LinkedList
 
             do
             {
-                
                 Console.WriteLine("Select an option: ");
                 Console.WriteLine("1. Show list of Nodes");
                 Console.WriteLine("2. Show user by [index NO]");
@@ -239,11 +240,13 @@ namespace LinkedList
                 Console.WriteLine("5. Remove all users");
                 Console.WriteLine("6. Create dummy list");
                 Console.WriteLine("7. Clear Console");
+
 				Console.WriteLine("8. Check if a list is empty");
 				Console.WriteLine("9. Exit");
                 Console.Write("Enter your choice: ");
 
                 while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > 9)
+
                 {
                     Console.WriteLine("\nInvalid choice. Please try again.\n");
                     Console.Write("Enter your choice: ");
@@ -282,6 +285,9 @@ namespace LinkedList
                         break;
                     case 7:
                         Console.Clear();
+
+
+
                         anyKey();
                         break;
                     case 8:
@@ -296,8 +302,10 @@ namespace LinkedList
 
 
 
+
 				}
             } while (choice != 9);
+
 
         }
 
