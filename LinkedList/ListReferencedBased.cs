@@ -1,19 +1,28 @@
-﻿using System;
 using System.Reflection;
 
 namespace LinkedList
 {
     // This class will contain methods for find and node.
-    public class ListReferencedBased : ListInterface
+    public class ListReferencedBased : IListInterface
     {
         ListIndexOutOfBoundsException ex = new ListIndexOutOfBoundsException();
         private Node head;
+
         /// <summary>
-        /// 
+        ///This method returns TRUE if the head is not null, else it will return FALSE.
         /// </summary>
-        /// <param name="index"></param>
-        /// <returns></returns>
-        private Node find(int index)
+        /// <returns>Boolean, True or False</returns>
+		public bool isEmpty()
+        {
+            return head == null;
+        }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <param name="index"></param>
+		/// <returns></returns>
+		private Node find(int index)
         {
             if (index < 1 || index > size())
             {
@@ -23,10 +32,14 @@ namespace LinkedList
             for (int i = 1; i < index; i++)
             {
                 current = current.getNext();
-                break;
+              //break;
             }
             return current;
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
         void outOfBound(int index)
         {
             if (index < 1 || index > size() + 1)
@@ -119,6 +132,7 @@ namespace LinkedList
         {
             head = null;
         }
+        
 
     }
 
