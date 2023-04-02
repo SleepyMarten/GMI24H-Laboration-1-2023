@@ -8,6 +8,9 @@
 bin/
 obj/
 .vs/
+bin
+obj
+.vs
 
 # Allow other files
 !*
