@@ -18,10 +18,10 @@ namespace LinkedList
         }
 
 		/// <summary>
-		/// 
+		/// Finds the node at given index in the linked list, loop trough the nodes until found given node
 		/// </summary>
 		/// <param name="index"></param>
-		/// <returns></returns>
+		/// <returns>Node</returns>
 		private Node find(int index)
         {
             if (index < 1 || index > size())
@@ -36,10 +36,7 @@ namespace LinkedList
             }
             return current;
         }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="index"></param>
+        //Method to check if index out of bound.
         void outOfBound(int index)
         {
             if (index < 1 || index > size() + 1)
@@ -52,9 +49,10 @@ namespace LinkedList
             }
         }
         /// <summary>
-        /// Returns the number of items in the list by going trought the list and counting nodes, returns 0 if the list is empty.
+        /// Runs trough the nodes in the list and then returns the sum of the lists.
+        /// each iteration makes the count variable increase.
         /// </summary>
-        /// <returns>Returns the total size</returns>
+        /// <returns>count</returns>
         public int size()
         {
             int count = 0;
